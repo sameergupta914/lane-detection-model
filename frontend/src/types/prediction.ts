@@ -5,6 +5,7 @@ export type PredictionResponse = {
   original_width: number;
   original_height: number;
   mask_url: string;
+  masked_image_url: string;
   overlay_url: string;
 };
 

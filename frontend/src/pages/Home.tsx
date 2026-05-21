@@ -100,16 +100,10 @@ export function Home() {
         </div>
         <div className="results-grid">
           <ResultCard
-            title="Original Image"
-            subtitle="Local browser preview"
-            imageUrl={previewUrl}
-            downloadName={selectedFile?.name}
-          />
-          <ResultCard
-            title="Predicted Mask"
-            subtitle="Binary lane segmentation output"
-            imageUrl={result?.mask_url ?? null}
-            downloadName="lane-mask.png"
+            title="Model Output"
+            subtitle="Original image filtered by the predicted lane region"
+            imageUrl={result?.masked_image_url ?? null}
+            downloadName="lane-masked-original.png"
           />
           <ResultCard
             title="Lane Overlay"

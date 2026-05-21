@@ -14,6 +14,7 @@ class PredictionResponse(BaseModel):
     original_width: int
     original_height: int
     mask_url: str
+    masked_image_url: str
     overlay_url: str
 
 

@@ -39,5 +39,6 @@ async def predict(request: Request, file: UploadFile = File(...)):
         original_width=result["original_width"],
         original_height=result["original_height"],
         mask_url=f"{base_url}/outputs/{result['mask_file']}",
+        masked_image_url=f"{base_url}/outputs/{result['masked_image_file']}",
         overlay_url=f"{base_url}/outputs/{result['overlay_file']}",
     )

@@ -5,6 +5,7 @@ import time
 import cv2
 
 from .image_utils import (
+    create_masked_image,
     create_overlay,
     decode_upload,
     grayscale_to_bgr,
@@ -28,8 +29,10 @@ def run_inference(file_bytes: bytes, filename: str) -> dict:
 
     mask = postprocess_mask(prediction[0], image_bgr.shape)
     overlay = create_overlay(image_bgr, mask)
+    masked_image = create_masked_image(image_bgr, mask)
 
     mask_file = save_output_image(grayscale_to_bgr(mask), "mask")
+    masked_image_file = save_output_image(masked_image, "masked")
     overlay_file = save_output_image(overlay, "overlay")
 
     return {
@@ -39,5 +42,6 @@ def run_inference(file_bytes: bytes, filename: str) -> dict:
         "original_width": original_width,
         "original_height": original_height,
         "mask_file": mask_file,
+        "masked_image_file": masked_image_file,
         "overlay_file": overlay_file,
     }

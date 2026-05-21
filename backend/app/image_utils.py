@@ -48,6 +48,11 @@ def create_overlay(image_bgr: np.ndarray, mask: np.ndarray) -> np.ndarray:
     return overlay
 
 
+def create_masked_image(image_bgr: np.ndarray, mask: np.ndarray) -> np.ndarray:
+    binary_mask = (mask > 0).astype(np.uint8) * 255
+    return cv2.bitwise_and(image_bgr, image_bgr, mask=binary_mask)
+
+
 def save_output_image(image_bgr: np.ndarray, suffix: str) -> str:
     filename = f"{uuid4().hex}_{suffix}.png"
     output_path = settings.output_dir / filename
